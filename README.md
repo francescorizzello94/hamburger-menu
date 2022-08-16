@@ -1,6 +1,5 @@
-# Dropdown Menu
-
-Fully responsive multilevel dropdown menu with Vanilla JavaScript.
+# Hamburger Menu
+Fully responsive and fully accessible multilevel dropdown menu built with vanilla JS, HTML and CSS.
 
 ## Installation
 npm install
@@ -10,9 +9,3 @@ npm run start
 
 ## Build production:
 npm run build
-
-## Features:
-- Babel
-- Autoprefixing with PostCss
-- Development server
-- Optimization for production 
