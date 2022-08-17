@@ -260,11 +260,6 @@ header {
     text-decoration: none;
   }
 
-  .nav__menu li a.focus {
-    color: rgb(241, 0, 0);
-
-  }
-
   .nav__menu li a:hover {
     color: rgb(241, 0, 0);
   }
