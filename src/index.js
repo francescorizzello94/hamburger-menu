@@ -21,18 +21,32 @@ navToggle.addEventListener('click', function (e) {
   e.stopPropagation();
 });
 
+
+// Keyboard navigation by adding focus class equivalent to hover class //
+
 const desktopMenuDropDown = document.querySelectorAll('.nav__menu li a');
 
 Array.from(desktopMenuDropDown)
-  .map(element => { 
-    element.addEventListener('focus',
-      function () {
-        this.classList.add('focus');
-        this.parentElement.classList.add('focus');
-        console.log(this);
-    })
-  //console.log(element.parentElement);
-})
+  .map(element => {
+    if (element.nextElementSibling) {
+      element.addEventListener('focus',
+        function () {
+          this.parentElement.classList.add('focus');
+        })
+
+      const dropDown = element.parentElement.nextElementSibling;
+      const dropDownElements = dropDown.querySelectorAll('a');
+      const lastElementIndex = dropDownElements.length - 1;
+      const lastElement = dropDownElements[lastElementIndex];
+      lastElement
+        .addEventListener(
+          'blur',
+          function () {
+            element.parentElement.classList.remove('focus');
+          }
+        )
+    }
+  })
 
 // Dropdown toogle on mobile
 const dropdown = document.querySelectorAll('.dropdown a');
