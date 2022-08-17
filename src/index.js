@@ -21,7 +21,18 @@ navToggle.addEventListener('click', function (e) {
   e.stopPropagation();
 });
 
+const desktopMenuDropDown = document.querySelectorAll('.nav__menu li a');
 
+Array.from(desktopMenuDropDown)
+  .map(element => { 
+    element.addEventListener('focus',
+      function () {
+        this.classList.add('focus');
+        this.parentElement.classList.add('focus');
+        console.log(this);
+    })
+  //console.log(element.parentElement);
+})
 
 // Dropdown toogle on mobile
 const dropdown = document.querySelectorAll('.dropdown a');
