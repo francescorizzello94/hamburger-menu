@@ -1,6 +1,6 @@
 import './style.css'
 
-// Prevent showing animation on window resize
+// Prevent showing animation on window resize //
 let resizeTimer;
 window.addEventListener("resize", () => {
   document.body.classList.add("resize-animation-stopper");
@@ -11,7 +11,7 @@ window.addEventListener("resize", () => {
 });
 
 
-// Menu toogle on mobile
+// Menu toogle on mobile //
 const navToggle = document.querySelector('.nav-toggle');
 const menuToggle = document.querySelector('.menu-toggle');
 
@@ -48,7 +48,8 @@ Array.from(desktopMenuDropDown)
     }
   })
 
-// Dropdown toogle on mobile
+
+// Dropdown toogle on mobile //
 const dropdown = document.querySelectorAll('.dropdown a');
 
 Array.from(dropdown)
@@ -57,21 +58,22 @@ Array.from(dropdown)
       .addEventListener('click', function (e) {
         this.nextElementSibling.classList.toggle('show');
         this.parentNode.classList.toggle('active');
+        this.parentNode.nextElementSibling.children[1].classList.remove('show');
+        const tracker = this.parentNode.nextElementSibling.children[1];
+        console.log(tracker.parentElement.previousElementSibling.children[1]);
+        //tracker.parentElement.previousElementSibling.children[1].classList.remove('show');
         e.stopPropagation();
       })
-
   });
 
 
-// Second level dropdown toggle on mobile
-const deepDropdown = document.querySelectorAll('.dropdown second-level a');
+/* const secondDropDownToggle = document.querySelectorAll('.dropdown-two a');
 
-Array.from(deepDropdown)
+Array.from(secondDropDownToggle)
   .map(element => {
     element
       .addEventListener('click', function (e) {
-        this.nextElementSibling.classList.toggle('show');
-        this.parentNode.classList.toggle('active');
+        this.parentNode.nextElementSibling.children[1].classList.remove('show');
         e.stopPropagation();
       })
-  });
+  }); */
