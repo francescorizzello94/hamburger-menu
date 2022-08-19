@@ -1,5 +1,5 @@
 # Hamburger Menu
-Fully responsive and fully accessible multilevel dropdown menu built with vanilla JS, HTML and CSS.
+Fully responsive, accessible multilevel dropdown menu built with vanilla JS, HTML and CSS.
 
 ## Installation
 npm install
