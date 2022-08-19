@@ -1,5 +1,3 @@
-import './style.css'
-
 // Prevent showing animation on window resize //
 let resizeTimer;
 window.addEventListener("resize", () => {
@@ -42,14 +40,14 @@ Array.from(desktopMenuDropDown)
         .addEventListener(
           'blur',
           function () {
-            element.parentElement.classList.remove('focus');
+            return element.parentElement.classList.remove('focus');
           }
         )
     }
   })
 
 
-// Dropdown toogle on mobile //
+// Dropdown toogle on mobile and collapse dropdown on click //
 const dropdown = document.querySelectorAll('.dropdown a');
 
 Array.from(dropdown)
@@ -59,21 +57,7 @@ Array.from(dropdown)
         this.nextElementSibling.classList.toggle('show');
         this.parentNode.classList.toggle('active');
         this.parentNode.nextElementSibling.children[1].classList.remove('show');
-        const tracker = this.parentNode.nextElementSibling.children[1];
-        console.log(tracker.parentElement.previousElementSibling.children[1]);
-        //tracker.parentElement.previousElementSibling.children[1].classList.remove('show');
+        this.parentNode.nextElementSibling.classList.remove('active');
         e.stopPropagation();
       })
   });
-
-
-/* const secondDropDownToggle = document.querySelectorAll('.dropdown-two a');
-
-Array.from(secondDropDownToggle)
-  .map(element => {
-    element
-      .addEventListener('click', function (e) {
-        this.parentNode.nextElementSibling.children[1].classList.remove('show');
-        e.stopPropagation();
-      })
-  }); */
