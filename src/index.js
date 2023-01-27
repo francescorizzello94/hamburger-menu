@@ -29,14 +29,12 @@ Array.from(desktopMenuDropDown).map((element) => {
     });
 
     const dropDown = element.parentElement.nextElementSibling;
-    const dropDownElements = dropDown.querySelectorAll("a");
-    const lastElementIndex = dropDownElements.length - 1;
-    const lastElement = dropDownElements[lastElementIndex];
-    lastElement.addEventListener("blur", function () {
-      return element.parentElement.classList.remove("focus");
+    dropDown.addEventListener("focusout", function() {
+      element.parentElement.classList.remove("focus");
     });
   }
 });
+
 
 // Dropdown toogle on mobile and collapse dropdown on click //
 const dropdown = document.querySelectorAll(".dropdown a");
