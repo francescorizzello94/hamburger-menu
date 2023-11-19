@@ -1,3 +1,26 @@
+// Reset dropdowns and manage focus on resize
+function resetDropdownsOnResize() {
+  const allDropdowns = document.querySelectorAll(".nav__menu .dropdown");
+  allDropdowns.forEach((dropdown) => {
+    // Close dropdown menus
+    const dropdownMenu = dropdown.querySelector("ul");
+    if (dropdownMenu) {
+      dropdownMenu.classList.remove("show");
+    }
+    dropdown.classList.remove("focus", "active");
+  });
+
+  tabbingOutOfLastLink = false;
+
+  // Manage focus for the first dropdown link in desktop view
+  if (window.innerWidth >= 768) {
+    const firstDropdownLink = document.querySelector(".nav__menu .dropdown a");
+    if (firstDropdownLink) {
+      firstDropdownLink.focus();
+    }
+  }
+}
+
 // Prevent showing animation on window resize //
 let resizeTimer;
 window.addEventListener("resize", () => {
@@ -5,6 +28,7 @@ window.addEventListener("resize", () => {
   clearTimeout(resizeTimer);
   resizeTimer = setTimeout(() => {
     document.body.classList.remove("resize-animation-stopper");
+    resetDropdownsOnResize();
   }, 400);
 });
 
@@ -51,8 +75,6 @@ Array.from(desktopMenuDropDown).map((element) => {
     });
   }
 });
-
-
 
 // Dropdown toogle on mobile and collapse dropdown on click //
 const dropdown = document.querySelectorAll(".dropdown a");
