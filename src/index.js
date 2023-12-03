@@ -1,3 +1,5 @@
+// 
+
 // Reset dropdowns and manage focus on resize
 function resetDropdownsOnResize() {
   const allDropdowns = document.querySelectorAll(".nav__menu .dropdown");
@@ -95,6 +97,31 @@ Array.from(dropdown).map((element) => {
     e.stopPropagation();
   });
 });
+
+// Add hover event handlers for desktop view
+document.querySelectorAll('.nav__menu .dropdown').forEach(dropdown => {
+  dropdown.addEventListener('mouseenter', () => {
+    if (window.innerWidth >= 768) {
+      const allDropdowns = document.querySelectorAll('.nav__menu .dropdown');
+      allDropdowns.forEach(otherDropdown => {
+        if (otherDropdown !== dropdown) {
+          const otherDropdownMenu = otherDropdown.querySelector('ul');
+          if (otherDropdownMenu) {
+            otherDropdownMenu.classList.remove('show');
+            otherDropdown.classList.remove('active', 'focus');
+          }
+        }
+      });
+
+      const dropdownMenu = dropdown.querySelector('ul');
+      if (dropdownMenu && !dropdownMenu.classList.contains('show')) {
+        dropdownMenu.classList.add('show');
+        dropdown.classList.add('active');
+      }
+    }
+  });
+});
+
 
 // Open dropdown on link focus (solve invisible tabbing issue)
 
