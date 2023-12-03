@@ -95,3 +95,15 @@ Array.from(dropdown).map((element) => {
     e.stopPropagation();
   });
 });
+
+// Open dropdown on link focus (solve invisible tabbing issue)
+
+document.querySelectorAll('.nav__menu .dropdown ul a').forEach(link => { 
+  link.addEventListener('focus', e => { 
+    const parentDropdown = link.closest('.dropdown');
+    const dropDownMenu = parentDropdown.querySelector('ul');
+    if (dropDownMenu && !dropDownMenu.classList.contains('show')) { 
+      parentDropdown.querySelector('a').click()
+    }
+  })
+})
